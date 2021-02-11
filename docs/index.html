@@ -191,6 +191,8 @@ Error message and password prompt
 
 <li>BlogDirectory</li>
 
+<li>Draft of 'SetupAuthenticationWithAmplify'</li>
+
 <li>HowToUseThisBlog</li>
 
 <li>LightBlueLinks</li>
@@ -10153,7 +10155,7 @@ BlogDirectory</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210211231004680" list="HowToUseThisBlog StartingAnAWSAndReactProject BlogDirectory" modified="20210211231004680" title="$:/StoryList">
+<div created="20210211231004680" list="HowToUseThisBlog StartingAnAWSAndReactProject [[Draft of 'SetupAuthenticationWithAmplify']] BlogDirectory" modified="20210211231635512" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10281,6 +10283,26 @@ BlogDirectory</pre>
 !!! HowToUseThisBlog
 * LightBlueLinks
 </pre>
+</div>
+<div created="20210208195845824" draft.of="SetupAuthenticationWithAmplify" draft.title="SetupAuthenticationWithAmplify" modified="20210211231638708" revision="0" tags="Projects programming AWS How-to: Links blog" title="Draft of 'SetupAuthenticationWithAmplify'" type="text/vnd.tiddlywiki">
+<pre>!! Prerequisites 
+
+# MakeAndSecureAnAWSAccount
+# You are in the right region in AWS. WhereIsAllMyStuffAWS
+
+!! Getting started 
+
+First I went into the [[Amplify service|https://us-west-2.console.aws.amazon.com/amplify/home?region=us-west-2#/]] and clicked [[Create an app backend.|https://us-west-2.console.aws.amazon.com/amplify/home?region=us-west-2#/deploy-backend]] Once that finished up I went into the Amplify Admin UI and clicked on Authentication in the left hand navigation. 
+
+!! Decision time
+
+Do you want simple email authentication or do you want to go all the way with things like Sign in Amazon, Facebook and Google? I wanted the latter options to reduce friction for potential users of my app.
+
+# SetupLoginWithAmazon
+# SetupFacebookLogin
+# SetupGoogleOauth
+
+After I added all of the API keys and secrets that Amplify asked for in the create authentication form and made sure I added the redirect URLs to the respective sign in services, I pressed Save and Deploy in Amplify and it looks like it all worked.</pre>
 </div>
 <div created="20210211222531636" modified="20210211224804965" tags="blog How-to:" title="HowToUseThisBlog">
 <pre>!! Hey there! 
