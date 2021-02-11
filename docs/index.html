@@ -143,6 +143,8 @@ Error message and password prompt
 
 <li>$:/core</li>
 
+<li>$:/DefaultTiddlers</li>
+
 <li>$:/GitHub/Branch</li>
 
 <li>$:/GitHub/Filename</li>
@@ -152,6 +154,8 @@ Error message and password prompt
 <li>$:/GitHub/Repo</li>
 
 <li>$:/GitHub/Username</li>
+
+<li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
 
@@ -165,6 +169,8 @@ Error message and password prompt
 
 <li>$:/state/tab-2065006209</li>
 
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
 <li>$:/StoryList</li>
@@ -172,6 +178,20 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>MakeAndSecureAnAWSAccount</li>
+
+<li>SetupAuthenticationWithAmplify</li>
+
+<li>SetupFacebookLogin</li>
+
+<li>SetupGoogleOauth</li>
+
+<li>SetupLoginWithAmazon</li>
+
+<li>StartingAnAWSAndReactProject</li>
+
+<li>WhereIsAllMyStuffAWS</li>
 
 </ul>
 </p>
@@ -10051,20 +10071,35 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div created="20210211203103197" modified="20210211203103197" title="$:/DefaultTiddlers">
+<pre>StartingAnAWSAndReactProjectGettingStarted
+</pre>
+</div>
 <div created="20210211000401710" modified="20210211000401971" title="$:/GitHub/Branch">
 <pre>main</pre>
 </div>
 <div created="20210211000410191" modified="20210211000415807" title="$:/GitHub/Filename">
 <pre>index.html</pre>
 </div>
-<div created="20210211000403972" modified="20210211000407691" title="$:/GitHub/Path">
-<pre>/wiki/</pre>
+<div created="20210211000403972" modified="20210211203214751" title="$:/GitHub/Path">
+<pre>/docs/</pre>
 </div>
 <div created="20210211000351661" modified="20210211000358320" title="$:/GitHub/Repo">
 <pre>aidanreidel/BlogWiki</pre>
 </div>
 <div created="20210211000223317" modified="20210211000223317" title="$:/GitHub/Username">
 <pre>aidanreidel</pre>
+</div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[StartingAnAWSAndReactProject]]
+# [[MakeAndSecureAnAWSAccount]]
+# [[SetupAuthenticationWithAmplify]]
+# [[SetupGoogleOauth]]
+# [[SetupFacebookLogin]]
+# [[SetupLoginWithAmazon]]
+# [[WhereIsAllMyStuffAWS]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10084,10 +10119,13 @@ Error message and password prompt
 <div created="20210210235800328" modified="20210210235956611" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
+<div created="20210211201858890" modified="20210211203121249" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
+</div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210211000334438" list="$:/ControlPanel GettingStarted" modified="20210211000334438" title="$:/StoryList">
+<div created="20210211201725983" list="$:/ControlPanel StartingAnAWSAndReactProject GettingStarted" modified="20210211203205505" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10198,6 +10236,131 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20210205213636300" modified="20210209223441447" revision="0" tags="blog Links How-to: programming AWS" title="MakeAndSecureAnAWSAccount" type="text/vnd.tiddlywiki">
+<pre>!! Sign Up for AWS
+
+[[This AWS link|https://portal.aws.amazon.com/billing/signup#/start]] is where I signed up for AWS. I followed the instructions there and got myself a shiny new root user account.
+
+!! Securing the root AWS account
+
+After I got my root account, I learned that if a bad actor gets access to this account one will most likely lose control of their entire AWS account, which makes sense.
+
+To mitigate this risk it is recommended to setup two factor authentication with something like Google authentication or a hardware device for the root account. [[More AWS furnished info here.|https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html]] I always setup two factor authentication with sensitive accounts so this was an obvious next step for me.
+
+To further mitigate this risk AWS recommends setting up an administrator account even if this account is only for personal use. I followed the instructions in [[these AWS docs|https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html]] to properly setup an administrator account. The previously linked docs also have more information on why AWS recommend doing this. 
+
+Again only use the administrator account to access AWS unless one HAS TO use the root account. This is the minimum level of security one should have before continuing on their AWS adventure.  </pre>
+</div>
+<div created="20210208195845824" modified="20210209223805523" revision="0" tags="Projects programming AWS How-to: Links" title="SetupAuthenticationWithAmplify" type="text/vnd.tiddlywiki">
+<pre>!! Prerequisites 
+
+# MakeAndSecureAnAWSAccount
+# You are in the right region in AWS. WhereIsAllMyStuffAWS
+
+!! Getting started 
+
+First I went into the [[Amplify service|https://us-west-2.console.aws.amazon.com/amplify/home?region=us-west-2#/]] and clicked [[Create an app backend.|https://us-west-2.console.aws.amazon.com/amplify/home?region=us-west-2#/deploy-backend]] Once that finished up I went into the Amplify Admin UI and clicked on Authentication in the left hand navigation. 
+
+!! Decision time
+
+Do you want simple email authentication or do you want to go all the way with things like Sign in Amazon, Facebook and Google? I wanted the latter options to reduce friction for potential users of my app.
+
+# SetupLoginWithAmazon
+# SetupFacebookLogin
+# SetupGoogleOauth
+
+After I added all of the API keys and secrets that Amplify asked for in the create authentication form and made sure I added the redirect URLs to the respective sign in services, I pressed Save and Deploy in Amplify and it looks like it all worked.</pre>
+</div>
+<div created="20210208231555851" list="" modified="20210209231138242" revision="0" tags="programming How-to: OAuth Facebook APIs blog Links" title="SetupFacebookLogin" type="text/vnd.tiddlywiki">
+<pre>!! Prerequisites
+
+# Have a Facebook Account: [[Facebook login|https://www.facebook.com/]]
+# Login and go to the [[Facebook developer Portal|https://developers.facebook.com]]
+
+!! Setting Facebook Login up:
+
+Facebook wants a little more information than Amazon and requires a bit more work to it get going. The first thing I did was follow these docs to [[Create an App.|https://developers.facebook.com/docs/development/create-an-app]] I specifically choose the &quot;Build Connected experiences&quot; option when the Create an App asked me &quot;What do you need your app to do?&quot; Then I followed the [[Facebook Login docs.|https://developers.facebook.com/docs/facebook-login/web]] These docs link to all of the other docs above which might be useful if I run into trouble. 
+
+To get the App ID and secret that Amplify wants I went to the Facebook developer portal, selected my app and in the navigation on the left hand side and clicked the drop down for &quot;Settings&quot; then selected &quot;Basic.&quot; Side note This might be where I need to add localhost:3000 and shareashow.aidanreidel.com. 
+</pre>
+</div>
+<div created="20210209001013487" list="" modified="20210209231138238" revision="0" tags="Links blog OAuth programming gcloud APIs How-to:" title="SetupGoogleOauth" type="text/vnd.tiddlywiki">
+<pre>!! Prerequisites
+
+# Have a Google Cloud Account: [[Getting started with Google Cloud|https://cloud.google.com/getting-started/]]
+# Login and head on over to the [[Developer Console|https://console.developers.google.com/]]
+
+!! Setting Google Up
+
+I followed these [[Setting up OAuth 2.0 docs|https://support.google.com/googleapi/answer/6158849?hl=en]] to create a new project in Google for my project and did all of the things it asked. 
+
+In the [[OAuth consent screen setup|https://console.cloud.google.com/apis/credentials/consent]] I selected all the non-sensitive scopes during scope selection and added my emails as test users. 
+
+To get the Web Client ID and Secret I went to [[APIs &amp; Services -&gt; Credentials |https://console.cloud.google.com/apis/credentials]] selected the OAuth 2.0 client ID I setup for my project and gave those to Amplify. I added the redirect URL from Amplify here to the Authorized redirect URI. This might be where I need to to add localhost:3000 and shareashow.aidanreidel.com. 
+
+I'll bet I'll have to come back to edit [[APIs &amp; Services -&gt; OAuth Consent screen|https://console.cloud.google.com/apis/credentials/consent]] to add a
+
+# Application home page link
+# Application privacy policy link
+# Application terms of service link 
+</pre>
+</div>
+<div created="20210208210948180" list="" modified="20210209231138233" revision="0" tags="Links OAuth Amazon How-to: programming APIs blog" title="SetupLoginWithAmazon" type="text/vnd.tiddlywiki">
+<pre>!! Prerequisites
+
+# Have an Amazon Developer Account: [[Create account, Amazon Developer|https://www.amazon.com/ap/register?clientContext=130-6325381-7579958&amp;openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;siteState=clientContext%3D132-5895051-3736763%2CsourceUrl%3Dhttps%253A%252F%252Fdeveloper.amazon.com%252Fsettings%252Fconsole%252Fregistration%253Freturn_to%253D%252F%2Csignature%3DJrOdWF5D4HsQhV81CDLj5y8p2SUj3D&amp;marketPlaceId=ATVPDKIKX0DER&amp;language=en_US&amp;pageId=amzn_developer_portal&amp;openid.return_to=https%3A%2F%2Fdeveloper.amazon.com%2Fsettings%2Fconsole%2Fregistration%3Freturn_to%3D%252F&amp;prevRID=0FXJZ6ESJ84GM17SETE7&amp;openid.assoc_handle=mas_dev_portal&amp;openid.mode=checkid_setup&amp;prepopulatedLoginId=&amp;failedSignInCount=0&amp;openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&amp;openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0]]
+
+!! Setting Log in with Amazon up:
+
+I am using Amplify so I really only need to do the very basic setup and I assume Amplify will do the rest. I simply followed the instructions provided in these [[Amazon Developer docs.|https://developer.amazon.com/docs/login-with-amazon/register-web.html]] I gave Amplify the Client ID and Client Secret. I gave Amazon Developer the redirect URL provided by Amplify for the Allowed Return URL and left the Allowed Origin blank. I might need to use localhost:3000 and shareashow.aidanreidel.com for the allowed origin. I'll cross that bridge when I get to it though.  
+
+</pre>
+</div>
+<div created="20210205195757474" modified="20210209231759995" revision="0" tags="Node React blog programming Projects AWS" title="StartingAnAWSAndReactProject" type="text/vnd.tiddlywiki">
+<pre>!! System Design
+
+One my goals as a software engineer is to level up from being a proverbial code monkey, where I implement things based on a specification, to being able to design a system and specification for a yet non existent application. This project is the first time I have decided to go all the way though the process of system design and subsequent implementation. 
+
+I intend to use this and future blog posts as both a documentation of the thought process behind the major design decisions I make and a narrative tutorial of sorts where future me or someone else can come to learn or remind themselves how to implement this type of system. With that being said lets jump right in with 
+
+!! The Beginning of the Front End   
+
+The first decisions I made were to use [[React|https://reactjs.org/]] and the [[Bootstrap|https://getbootstrap.com/]] derivative [[React Bootstrap|https://react-bootstrap.github.io/]] for the front end. I chose these two frameworks because:
+
+# I have the most experience with them 
+# I do not want to get bogged down learning new front end frameworks while also learning about system design 
+
+With these decisions made I got to work getting the basic front end layout of my app going. Because I wanted my app to be a single page web application I decided to add react-router. Once I felt the basic layout was good enough to start adding real functionality I got to building
+
+!! The Beginning of the Back End  
+
+The next big decision I made was to use [[AWS|https://aws.amazon.com/]], specifically [[Lambda|https://aws.amazon.com/lambda/]], [[DynamoDB|https://aws.amazon.com/dynamodb/]] and [[Cognito|https://aws.amazon.com/cognito/]], for the back end of my app. I decided I wanted to use AWS for the back end of my app for three reasons: 
+
+# Experience with AWS for full stack engineers is valuable for potential employers
+# I have already climbed up a fair amount of the AWS learning curve from experience using it from my job as a Full Stack Engineer working at Portland State University making the braille teaching application [[UEB PREP|http://uebprep.com/]]
+# I want to learn about what goes into setting up and managing an AWS hosted app back end
+
+Having decided to use AWS the first thing to do was MakeAndSecureAnAWSAccount.
+
+After I had finished jumping through all of those necessary hoops I was ready to go forward and start configuring my project 
+
+!! [[AWS Amplify|https://aws.amazon.com/amplify/]]
+
+At this point I was able to get started with Amplify. I decided to use Amplify because I am under the impression that Amplify will help me get my project off the ground faster and more sustainably than I could by following tutorials of unknown provenance. 
+
+I figured a good starting point for my project would be to SetupAuthenticationWithAmplify. I went through all the trouble of setting up the Oauth too for a few reasons: 
+
+# I wanted to reduce sign up friction for potential users of my app 
+# I figured setting up these Oauth APIs it would be good experience
+# Amplify told me that this option can not be changed later
+
+Now that I have deployed the Authentication in Amplify it's time to connect it with my app which I will discuss in a future blog post.</pre>
+</div>
+<div created="20210208202748835" modified="20210211202808004" revision="0" tags="[[tips &amp; tricks]] AWS blog" title="WhereIsAllMyStuffAWS" type="text/vnd.tiddlywiki">
+<pre>!! Are you in the right region?
+
+Look at the top right of the console and make sure you are in the right region. Sometimes I end up in Ohio for whatever reason. My stuff is in Oregon.</pre>
 </div>
 
 
